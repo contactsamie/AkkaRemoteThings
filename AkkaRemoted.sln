@@ -1,0 +1,63 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 14
+VisualStudioVersion = 14.0.25123.0
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "server", "server\server.csproj", "{4128DF46-B740-440B-83D7-3536CD1AB457}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "client", "client\client.csproj", "{93357732-1585-41F0-A33F-A37E212781E8}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "common", "common\common.csproj", "{F121EEDC-C79A-4095-9CA3-E71F43D7F7D2}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "AkkaRemote", "AkkaRemote", "{BAA28CAE-E57B-42B3-A233-0E7BEC2D32CA}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "AkkaCluster", "AkkaCluster", "{A6247D9A-4A3C-4C6B-93DD-CFFBFD1C8ABD}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SeedNode", "SeedNode\SeedNode.csproj", "{E8D7E453-6E52-4A66-BC84-16B0E1DAC139}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SomeNode", "SomeNode\SomeNode.csproj", "{394C41CF-BFC6-4E70-9F10-DD5678B8FCD3}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SomeServerNode", "SomeServerNode\SomeServerNode.csproj", "{FD83C914-64F7-4349-8F41-AD44F6C50786}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{4128DF46-B740-440B-83D7-3536CD1AB457}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4128DF46-B740-440B-83D7-3536CD1AB457}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4128DF46-B740-440B-83D7-3536CD1AB457}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4128DF46-B740-440B-83D7-3536CD1AB457}.Release|Any CPU.Build.0 = Release|Any CPU
+		{93357732-1585-41F0-A33F-A37E212781E8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{93357732-1585-41F0-A33F-A37E212781E8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{93357732-1585-41F0-A33F-A37E212781E8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{93357732-1585-41F0-A33F-A37E212781E8}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F121EEDC-C79A-4095-9CA3-E71F43D7F7D2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F121EEDC-C79A-4095-9CA3-E71F43D7F7D2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F121EEDC-C79A-4095-9CA3-E71F43D7F7D2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F121EEDC-C79A-4095-9CA3-E71F43D7F7D2}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E8D7E453-6E52-4A66-BC84-16B0E1DAC139}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E8D7E453-6E52-4A66-BC84-16B0E1DAC139}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E8D7E453-6E52-4A66-BC84-16B0E1DAC139}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E8D7E453-6E52-4A66-BC84-16B0E1DAC139}.Release|Any CPU.Build.0 = Release|Any CPU
+		{394C41CF-BFC6-4E70-9F10-DD5678B8FCD3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{394C41CF-BFC6-4E70-9F10-DD5678B8FCD3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{394C41CF-BFC6-4E70-9F10-DD5678B8FCD3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{394C41CF-BFC6-4E70-9F10-DD5678B8FCD3}.Release|Any CPU.Build.0 = Release|Any CPU
+		{FD83C914-64F7-4349-8F41-AD44F6C50786}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FD83C914-64F7-4349-8F41-AD44F6C50786}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FD83C914-64F7-4349-8F41-AD44F6C50786}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FD83C914-64F7-4349-8F41-AD44F6C50786}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{4128DF46-B740-440B-83D7-3536CD1AB457} = {BAA28CAE-E57B-42B3-A233-0E7BEC2D32CA}
+		{93357732-1585-41F0-A33F-A37E212781E8} = {BAA28CAE-E57B-42B3-A233-0E7BEC2D32CA}
+		{E8D7E453-6E52-4A66-BC84-16B0E1DAC139} = {A6247D9A-4A3C-4C6B-93DD-CFFBFD1C8ABD}
+		{394C41CF-BFC6-4E70-9F10-DD5678B8FCD3} = {A6247D9A-4A3C-4C6B-93DD-CFFBFD1C8ABD}
+		{FD83C914-64F7-4349-8F41-AD44F6C50786} = {A6247D9A-4A3C-4C6B-93DD-CFFBFD1C8ABD}
+	EndGlobalSection
+EndGlobal
