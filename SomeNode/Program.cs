@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Immutable;
 using System.Configuration;
+using System.Linq;
 using Akka.Actor;
 using Akka.Cluster;
 using Akka.Cluster.Routing;
@@ -20,23 +21,31 @@ namespace SomeNode
 
             using (var actorSystem = ActorSystem.Create(myActorsystem))
             {
-              var actor=  actorSystem.ActorOf<ChatActor>(chatActorName);
-                var chatActorSelection =actorSystem.ActorSelection("akka.tcp://ChatSystem-cluster@localhost:50000/user/*");
-                var chatActorSelection2 =actorSystem.ActorSelection("akka.tcp://ChatSystem-cluster@localhost:50000/user/ChatActor");
-
-                // var chatActorSelection22 = actorSystem.ActorSelection("akka.tcp://ChatSystem-cluster@localhost:30000/api/myClusterGroupRouter");
-
-                //var backendRouter = actorSystem.ActorOf(Props.Empty.WithRouter(FromConfig.Instance));
+             
+                var chatActorSelection =actorSystem.ActorSelection("akka.tcp://ChatSystemCluster@localhost:50000/user/*");
+                var chatActorSelection2 =actorSystem.ActorSelection("akka.tcp://ChatSystemCluster@localhost:50000/user/ChatActor");
+                var chatActorSelection3 = actorSystem.ActorSelection("/ChatSystemCluster/user/ChatActor");
                 
-                var chatActorRemote = chatActorSelection2.ResolveOne(TimeSpan.FromSeconds(30)).Result;
+                //   var router = actorSystem.ActorOf(Props.Empty.WithRouter(FromConfig.Instance),chatActorName);
 
                 Console.WriteLine("Started SomeNode");
                 while (true)
                 {
                     var mesage = Console.ReadLine();
-                   // backendRouter.Tell(mesage);
+
+                    Console.WriteLine("Sending message to * selection");
                     chatActorSelection.Tell(mesage);
-                    chatActorRemote.Tell(mesage);
+
+                    Console.WriteLine("Sending message to specific actor");
+                    chatActorSelection2.Tell(mesage);
+
+                    Console.WriteLine("Sending message to actor without protocol part");
+                    chatActorSelection3.Tell(mesage);
+
+                    Console.WriteLine("Sending message to cluster specific role");
+                    var address = Cluster.Get(actorSystem).ReadView.Members.First(x => x.Roles.Contains("api")).Address;
+                    var router = actorSystem.ActorSelection(address + "/user/" + chatActorName);
+                    router.Tell(mesage);
                 }
             }
         }

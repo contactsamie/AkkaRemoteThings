@@ -11,7 +11,11 @@ namespace common
     {
         public ChatActor()
         {
-            ReceiveAny(Console.WriteLine);
+            ReceiveAny(_ =>
+            {
+                Console.WriteLine("From : "+Self);
+                Console.WriteLine(_);
+            });
         }
     }
 }
