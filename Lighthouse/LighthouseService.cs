@@ -10,6 +10,7 @@
 // under the License is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR 
 // CONDITIONS OF ANY KIND, either express or implied. See the License for the 
 // specific language governing permissions and limitations under the License.
+
 using Akka.Actor;
 using Topshelf;
 
@@ -22,7 +23,9 @@ namespace Lighthouse
 
         private ActorSystem _lighthouseSystem;
 
-        public LighthouseService() : this(null, null) { }
+        public LighthouseService() : this(null, null)
+        {
+        }
 
         public LighthouseService(string ipAddress, int? port)
         {

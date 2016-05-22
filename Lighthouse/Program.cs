@@ -10,20 +10,21 @@
 // under the License is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR 
 // CONDITIONS OF ANY KIND, either express or implied. See the License for the 
 // specific language governing permissions and limitations under the License.
+
 using Topshelf;
 
 namespace Lighthouse
 {
-    class Program
+    internal class Program
     {
-        static int Main(string[] args)
+        private static int Main(string[] args)
         {
             return (int) HostFactory.Run(x =>
             {
                 x.SetServiceName("Lighthouse");
                 x.SetDisplayName("Lighthouse Service Discovery");
                 x.SetDescription("Lighthouse Service Discovery for Akka.NET Clusters");
-                
+
                 x.UseAssemblyInfoForServiceInfo();
                 x.RunAsLocalSystem();
                 x.StartAutomatically();

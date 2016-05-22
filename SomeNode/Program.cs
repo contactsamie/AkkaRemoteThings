@@ -1,12 +1,7 @@
 ﻿using System;
-using System.Collections.Immutable;
 using System.Configuration;
-using System.Linq;
 using Akka.Actor;
 using Akka.Cluster;
-using Akka.Cluster.Routing;
-using Akka.Configuration;
-using Akka.Routing;
 using common;
 
 namespace SomeNode
@@ -15,21 +10,20 @@ namespace SomeNode
     {
         private static void Main(string[] args)
         {
-
             var myActorsystem = ConfigurationManager.AppSettings["my-actorsystem"];
             var route = ConfigurationManager.AppSettings["route"];
             var chatActorName = ConfigurationManager.AppSettings["chat-actor-name"];
 
             using (var actorSystem = ActorSystem.Create(myActorsystem))
             {
-             
-                var chatActorSelection =actorSystem.ActorSelection("akka.tcp://ChatSystemCluster@localhost:50000/user/*");
-                var chatActorSelection2 =actorSystem.ActorSelection("akka.tcp://ChatSystemCluster@localhost:50000/user/ChatActor");
+                var chatActorSelection =
+                    actorSystem.ActorSelection("akka.tcp://ChatSystemCluster@localhost:50000/user/*");
+                var chatActorSelection2 =
+                    actorSystem.ActorSelection("akka.tcp://ChatSystemCluster@localhost:50000/user/ChatActor");
                 var chatActorSelection3 = actorSystem.ActorSelection("/ChatSystemCluster/user/ChatActor");
-                
-                   var router2 = actorSystem.ActorOf(Props.Create<ChatActor>(),chatActorName);
 
-               
+                var router2 = actorSystem.ActorOf(Props.Create<ChatActor>(), chatActorName);
+
 
                 Console.WriteLine("Started SomeNode");
                 while (true)
@@ -59,7 +53,6 @@ namespace SomeNode
                     //Console.WriteLine("Sending message based on config router");
                     //var router3 = actorSystem.ActorOf(Props.Empty.WithRouter(FromConfig.Instance), chatActorName);
                     //router3.Tell(mesage);
-
                 }
             }
         }
