@@ -5,6 +5,7 @@ using System.Linq;
 using Akka.Actor;
 using Akka.Cluster;
 using Akka.Cluster.Routing;
+using Akka.Configuration;
 using Akka.Routing;
 using common;
 
@@ -26,7 +27,9 @@ namespace SomeNode
                 var chatActorSelection2 =actorSystem.ActorSelection("akka.tcp://ChatSystemCluster@localhost:50000/user/ChatActor");
                 var chatActorSelection3 = actorSystem.ActorSelection("/ChatSystemCluster/user/ChatActor");
                 
-                //   var router = actorSystem.ActorOf(Props.Empty.WithRouter(FromConfig.Instance),chatActorName);
+                   var router2 = actorSystem.ActorOf(Props.Create<ChatActor>(),chatActorName);
+
+               
 
                 Console.WriteLine("Started SomeNode");
                 while (true)
@@ -46,6 +49,17 @@ namespace SomeNode
                     var address = Cluster.Get(actorSystem).ReadView.Members.First(x => x.Roles.Contains("api")).Address;
                     var router = actorSystem.ActorSelection(address + "/user/" + chatActorName);
                     router.Tell(mesage);
+
+
+                    Console.WriteLine("Sending message to created actorof");
+                    router2.Tell(mesage);
+
+
+                    //todo this doesnt work
+                    //Console.WriteLine("Sending message based on config router");
+                    //var router3 = actorSystem.ActorOf(Props.Empty.WithRouter(FromConfig.Instance), chatActorName);
+                    //router3.Tell(mesage);
+
                 }
             }
         }
